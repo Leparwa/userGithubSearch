@@ -16,7 +16,8 @@ import { UserGithubProfileComponent } from './components/user-github-profile/use
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
