@@ -3,9 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  url:'https://api.github.com'
+ 
+  production: false
 };
+//npx angular-cli-ghpages --dir=dist/quotesApp
 
 
 /*

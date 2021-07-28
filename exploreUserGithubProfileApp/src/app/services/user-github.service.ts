@@ -2,14 +2,15 @@ import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/htt
 import { Injectable } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, throwError } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import {  UserGithubProfile } from '../models/user-github-profile';
+import { environment } from '../../environments/environment';
+import {  repo, UserGithubProfile } from '../models/user-github-profile';
 import { catchError, map, tap } from 'rxjs/operators';
 import { forkJoin } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class UserGithubService {
+  baseUrl="https://api.github.com"
   constructor(
     private http:HttpClient,
     private toastr: ToastrService
@@ -17,8 +18,8 @@ export class UserGithubService {
 
 
   getUserData(uName:string):Observable<UserGithubProfile>{
-    return this.http.get<UserGithubProfile>(
-      `${environment.url}/users/${uName}`
+    return this.http.get<any>(
+      `${this.baseUrl}/users/${uName}`
     )
   }
   getUserEvents(eventsLink:string){
@@ -26,19 +27,17 @@ export class UserGithubService {
       `${eventsLink}`
     )
   }
-  getUserRepos(repoLink:string){
-    return this.http.get(
+  getUserRepos(repoLink:string):Observable<repo>{
+    return this.http.get<any>(
       `${repoLink}`
     )
   }
   searchUser(userName: string){
     userName = userName.trim();
-    const searchUrl = `${environment.url}/users/${userName}`;
+    const searchUrl = `${this.baseUrl}/users/${userName}`;
     return this.http.jsonp<any>(searchUrl,'callback').pipe(
-      tap(
-        data => console.log(data),
-        error => console.log(error)
-      )
+    
+      
     )
   }
   

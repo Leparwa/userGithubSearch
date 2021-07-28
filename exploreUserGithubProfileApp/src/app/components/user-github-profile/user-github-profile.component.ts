@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { UserGithubProfile } from 'src/app/models/user-github-profile';
+import { repo, UserGithubProfile } from 'src/app/models/user-github-profile';
 import { UserGithubService } from 'src/app/services/user-github.service';
 
 @Component({
@@ -11,8 +11,8 @@ import { UserGithubService } from 'src/app/services/user-github.service';
 })
 export class UserGithubProfileComponent implements OnInit {
 public userProfile: any
-public repos:any
-public publicEvents:any
+public repos:any=[]
+public publicEvents:any=[]
   constructor(
     private activateRoute:ActivatedRoute,
     private userService:UserGithubService
@@ -21,11 +21,17 @@ public publicEvents:any
   ngOnInit(): void {
     this.getUsername()
   }
+  getRepos(repoUrl:string){
+  
+  }
+  getEvents(eventUrl:string){
+
+  }
   getUsername(){
     let username= this.activateRoute.snapshot.params.user
     this.userService.getUserData(username).subscribe((res)=>{
       this.userProfile=res
-      this.userService.getUserEvents(res.repos_url).subscribe((res)=>{
+      this.userService.getUserRepos(res.repos_url).subscribe((res)=>{
         this.repos=res
       })
       this.userService.getUserEvents(res.received_events_url).subscribe((res)=>{

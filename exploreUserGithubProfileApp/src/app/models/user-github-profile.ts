@@ -15,4 +15,15 @@ export interface UserGithubProfile {
     hireable:{},
     url:string
 }
+export interface repo{
+    name:string,
+    description:string,
+    url:string
+    size:number,
+    forks:number,
+    language:string
+}
+export interface pEvents{
+    
+}
 
