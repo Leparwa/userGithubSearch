@@ -1,0 +1,18 @@
+export interface UserGithubProfile {
+    login:string
+    avatar_url:string,
+    name:string,
+    email:string,
+    bio:string,
+    twitter_username:string,
+    public_repos:number,
+    public_gists:number,
+    followers:number,
+    following:number
+    repos_url:string,
+    received_events_url:string,
+    blog:{},
+    hireable:{},
+    url:string
+}
+

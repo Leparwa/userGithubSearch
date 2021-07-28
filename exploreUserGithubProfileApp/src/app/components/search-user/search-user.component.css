@@ -29,12 +29,12 @@
 
 
     .searchButton{
-    height: auto;
+    height: 40px;
     width: 100px;
     float: right;
     display: flex;
-    margin-right: -29%;
-    justify-content: center;
+    margin-right: -23%;
+   justify-content: center;
     align-items: center;
     border-radius: 30px; 
     color:white;

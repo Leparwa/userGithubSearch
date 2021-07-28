@@ -96,7 +96,10 @@
             ],
             "styles": [
               "node_modules/@fortawesome/fontawesome-free/css/fontawesome.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/styles.css"
+             
+
             ],
             "scripts": []
           }

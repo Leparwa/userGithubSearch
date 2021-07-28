@@ -9,16 +9,16 @@
                 <div class="card" style="background-color:#707c64;">
                     <div class="card-body">
                       <div class="d-flex flex-column align-items-center text-center">
-                        <img src="https://avatars.githubusercontent.com/u/29487883?v=4" alt="avatar" class="rounded-circle" width="150">
+                        <img [src]="userProfile?.avatar_url" alt="avatar" class="rounded-circle" width="150">
                         <div class="mt-3">
                             <p>
-                                Hi, I Am Leparwa
+                                {{userProfile?.name}}
                             </p>
                             <p>
                                 <small>
                                     <i>
                                         <strong>
-                                            Angular developer, web designer and graphic designer
+                                          {{userProfile?.bio}}
                                         </strong>
                                     </i>
                                 </small>
@@ -27,7 +27,7 @@
                               <small>
                               <strong>
                                 Hireable:
-                              </strong> <span class="badge badge-pill badge-warning">null</span>
+                              </strong> <span class="badge badge-pill badge-warning">{{userProfile?.hireable}}</span>
                               </small>
                           </h5>
       
@@ -42,25 +42,25 @@
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"  style="background-color:#707c64;">
                             Blog
                           <span class="text-secondary">
-                              <a href="">url</a>
+                              <a href="">{{userProfile?.blog}}</a>
                           </span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"  style="background-color:#707c64;">
-                          Github
+                          Github: 
                         <span class="text-secondary">
-                            <a href="">url</a>
+                            <a href=""> {{userProfile?.url}}</a>
                         </span>
                       </li>
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"  style="background-color:#707c64;">
                           Email
                         <span class="text-secondary">
-                            <a href="">url</a>
+                            <a href="">{{userProfile?.email}}</a>
                         </span>
                       </li>
                       <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"  style="background-color:#707c64;">
                           Twitter
                         <span class="text-secondary">
-                            <a href="">url</a>
+                            <a href="">@{{userProfile?.twitter_username}}</a>
                         </span>
                       </li>
                       </ul>
@@ -77,7 +77,7 @@
                         <div class="card" style="background-color: rgb(93, 43, 209);">
                             <div class="card-body">
                                 <div class="col">
-                                    <p>333</p>
+                                    <p>{{userProfile?. public_repos}}</p>
                                     <p>
                                         <strong>
                                             REPO
@@ -96,7 +96,7 @@
                     <div class="card" style="background-color: deeppink;">
                         <div class="card-body">
                             <div class="col">
-                                <p>333</p>
+                                <p>{{userProfile?. public_gists}}</p>
                                 <p>
                                 <strong>
                                   GISTS 
@@ -115,7 +115,7 @@
                 <div class="card bg-" style="background-color: rgb(179, 209, 43);">
                     <div class="card-body">
                         <div class="col">
-                            <p>333</p>
+                            <p>{{userProfile?.following}}</p>
                             <p>
                             <strong>
                                FOLLOWING
@@ -129,7 +129,7 @@
             <div class="card" style="background-color: rgb(14, 117, 54);">
                 <div class="card-body">
                     <div class="col">
-                        <p>333</p>
+                        <p>{{userProfile?.followers}}</p>
                         <p>
                         <strong>
                             FOLLOWERS
@@ -154,30 +154,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td class="d-flex justify-content-center"><img src="https://avatars.githubusercontent.com/u/29487883?v=4" alt="" height="50px" width="50px" style="border-radius: 50%;"></td>
-                                    <td>Fork Event</td>
-                                    <td>Fork Event</td>
-                                    <td>Fork Event</td>
+                                <tr *ngFor="let event of publicEvents">
+                                    <td class="d-flex justify-content-center"><img [src]="event?.actor?.avatar_url" alt="" height="50px" width="50px" style="border-radius: 50%;"></td>
+                                    <td>{{event?.type}}</td>
+                                    <td>{{event?.actor?.display_login}}</td>
+                                    <td>{{event?.repo?.name}}</td>
                                 </tr>
-                                <tr>
-                                    <td class="d-flex justify-content-center"><img src="https://avatars.githubusercontent.com/u/29487883?v=4" alt="" height="50px" width="50px" style="border-radius: 50%;"></td>
-                                    <td>Fork Event</td>
-                                    <td>Fork Event</td>
-                                    <td>Fork Event</td>
-                                </tr>
-                                <tr>
-                                    <td class="d-flex justify-content-center"><img src="https://avatars.githubusercontent.com/u/29487883?v=4" alt="" height="50px" width="50px" style="border-radius: 50%;"></td>
-                                    <td>Fork Event</td>
-                                    <td>Fork Event</td>
-                                    <td>Fork Event</td>
-                                </tr>
-                                <tr>
-                                    <td class="d-flex justify-content-center"><img src="https://avatars.githubusercontent.com/u/29487883?v=4" alt="" height="50px" width="50px" style="border-radius: 50%;"></td>
-                                    <td>Fork Event</td>
-                                    <td>Fork Event</td>
-                                    <td>Fork Event</td>
-                                </tr>
+                              
                             </tbody>
                           </table>
                     </div>
@@ -185,7 +168,7 @@
        
                 </div>
               </div>
-                <div class="card">
+                <div class="card" >
                     <div class="card-header d-flex justify-content-center bg-white">
                         <h4>
                             <strong>
@@ -195,39 +178,9 @@
                     </div>
                     <div class="card-body">
                         <div class="row gutters-sm">
-                            <div class="col-sm-6 mb-3">
-                                <div class="card h-100 shadow">
-                                  <div class="card-body">
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                          <h4>Name:</h4>
-                                          <p>
-                                              <small>
-                                                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repre
-                                              </small>
-                                          </p>
-                                          <p class="float-right">
-                                              <strong>
-                                                  url: 
-                                              </strong>
-                                          </p>
-                                      </div>
-                                      <div class="col-md-3">
-                                          <small>Size: 44</small>
-                                      </div> 
-                                      <div class="col-md-3">
-                                          <small>  Forks: 3</small>
-                                        </div> 
-                                      <div class="col-md-6">
-                                       <small>Language: HTML</small>
-                                      </div>  
-                                      
-                                   </div>
-                                  </div>
-                                </div>
-                              </div>
+                            <ng-container *ngFor="let repo of repos">
                               <div class="col-sm-6 mb-3">
-                                <div class="card h-100 shadow">
+                                <div class="card h-100 shadow" >
                                   <div class="card-body">
                                     <div class="row">
                                       <div class="col-md-12">
@@ -257,131 +210,7 @@
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-sm-6 mb-3">
-                                <div class="card h-100 shadow">
-                                  <div class="card-body">
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                          <h4>Name:</h4>
-                                          <p>
-                                              <small>
-                                                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repre
-                                              </small>
-                                          </p>
-                                          <p class="float-right">
-                                              <strong>
-                                                  url: 
-                                              </strong>
-                                          </p>
-                                      </div>
-                                      <div class="col-md-3">
-                                          <small>Size: 44</small>
-                                      </div> 
-                                      <div class="col-md-3">
-                                          <small>  Forks: 3</small>
-                                        </div> 
-                                      <div class="col-md-6">
-                                       <small>Language: HTML</small>
-                                      </div>  
-                                      
-                                   </div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="col-sm-6 mb-3">
-                                <div class="card h-100 shadow">
-                                  <div class="card-body">
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                          <h4>Name:</h4>
-                                          <p>
-                                              <small>
-                                                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repre
-                                              </small>
-                                          </p>
-                                          <p class="float-right">
-                                              <strong>
-                                                  url: 
-                                              </strong>
-                                          </p>
-                                      </div>
-                                      <div class="col-md-3">
-                                          <small>Size: 44</small>
-                                      </div> 
-                                      <div class="col-md-3">
-                                          <small>  Forks: 3</small>
-                                        </div> 
-                                      <div class="col-md-6">
-                                       <small>Language: HTML</small>
-                                      </div>  
-                                      
-                                   </div>
-                                  </div>
-                                </div>
-                              </div>
-                            <div class="col-sm-6 mb-3">
-                              <div class="card h-100 shadow">
-                                <div class="card-body">
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                        <h4>Name:</h4>
-                                        <p>
-                                            <small>
-                                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repre
-                                            </small>
-                                        </p>
-                                        <p class="float-right">
-                                            <strong>
-                                                url: 
-                                            </strong>
-                                        </p>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <small>Size: 44</small>
-                                    </div> 
-                                    <div class="col-md-3">
-                                        <small>  Forks: 3</small>
-                                      </div> 
-                                    <div class="col-md-6">
-                                     <small>Language: HTML</small>
-                                    </div>  
-                                    
-                                 </div>
-                                </div>
-                              </div>
-                            </div>
-                            
-                            <div class="col-sm-6 mb-3">
-                                <div class="card h-100 shadow">
-                                    <div class="card-body">
-                                      <div class="row">
-                                        <div class="col-md-12">
-                                            <h4>Name:</h4>
-                                            <p>
-                                                <small>
-                                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repre
-                                                </small>
-                                            </p>
-                                            <p class="float-right">
-                                                <strong>
-                                                    url: 
-                                                </strong>
-                                            </p>
-                                        </div>
-                                        <div class="col-md-3">
-                                            <small>Size: 44</small>
-                                        </div> 
-                                        <div class="col-md-3">
-                                            <small>  Forks: 3</small>
-                                          </div> 
-                                        <div class="col-md-6">
-                                         <small>Language: HTML</small>
-                                        </div>  
-                                        
-                                     </div>
-                                    </div>
-                                  </div>
-                            </div>
+                            </ng-container>
                           </div>
                     </div>
                 </div>
