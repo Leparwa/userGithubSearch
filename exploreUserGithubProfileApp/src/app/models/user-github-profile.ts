@@ -13,7 +13,7 @@ export interface UserGithubProfile {
     received_events_url:string,
     blog:{},
     hireable:{},
-    url:string
+    html_url:string
 }
 export interface repo{
     name:string,
@@ -24,6 +24,6 @@ export interface repo{
     language:string
 }
 export interface pEvents{
-    
+
 }
 
